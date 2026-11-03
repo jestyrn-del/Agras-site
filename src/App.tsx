@@ -1,6 +1,10 @@
 import './App.css'
 import { useState } from 'react'
 
+import '../public/Assets/Fonts/use-font.css'
+
+import Logo from '../public/Assets/Common-Logo.svg';
+
 const products = [
   { name: 'HD 580', model: 'AGR 40', tank: '70 л', flow: '40 л/мин', badge: 'Хит продаж' },
   { name: 'HD 580', model: 'AGR 30', tank: '50 л', flow: '30 л/мин', badge: 'В наличии' },
@@ -90,8 +94,7 @@ function Header() {
   return (
     <header className="site-header">
       <a className="brand" href="#home" aria-label="Аграс, на главную">
-        <span className="brand-symbol">А</span>
-        <span className="brand-copy"><strong>АГРАС</strong><small>агродроны для вашего бизнеса</small></span>
+        <img src={Logo} alt="Аграс" />
       </a>
       <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-label="Открыть меню" onClick={() => setMenuOpen(!menuOpen)}>
         <span /><span /><span />
@@ -128,7 +131,7 @@ function Hero() {
       <div className="hero-content">
         <p className="hero-overline">Внедряем агродроны под ключ — от подбора до сервиса 24/7</p>
         <div className="hero-title-wrap">
-          <h1><span>АГРО</span><span>ТЕХ<sup>®</sup></span></h1>
+          <h1><span>агро-</span><span>тех<sup>®</sup></span></h1>
           <div className="hero-caption">АГРОДРОНЫ<br />ДЛЯ ВАШЕГО<br />БИЗНЕСА</div>
         </div>
         <div className="hero-bottom">

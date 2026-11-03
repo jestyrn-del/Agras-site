@@ -1,5 +1,7 @@
+@import url('/Assets/Fonts/use-font.css');
+
 :root {
-  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  font-family: 'Geist';
   color: #171717;
   background: #ededed;
   font-synthesis: none;
