@@ -1,26 +1,39 @@
 :root {
-  font-family: Inter, 'Segoe UI', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #1a2a22;
-  background:
-    radial-gradient(circle at top left, rgba(109, 210, 143, 0.18), transparent 30%),
-    linear-gradient(180deg, #f6faf7 0%, #edf6f1 100%);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #171717;
+  background: #ededed;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
-.section {
-  width: 95%;
-  align-items: center;
-  margin: 0 auto;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-footer {
-  padding: 2rem;
-  text-align: center;
-  background-color: #f6faf7;
-  border-top: 1px solid #e0e0e0;
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
