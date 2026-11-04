@@ -252,7 +252,7 @@ function Hero() {
       <div className="hero-content">
         <p className="hero-overline">Внедряем агродроны под ключ — от подбора до сервиса 24/7</p>
         <div className="hero-title-wrap">
-          <h1><span>агро-</span><span>тех<sup>®</sup></span></h1>
+          <h1><span>агро-</span><span>тех</span></h1>
           <div className="hero-caption">АГРОДРОНЫ<br />ДЛЯ ВАШЕГО<br />БИЗНЕСА</div>
         </div>
         <div className="hero-bottom">
@@ -264,7 +264,6 @@ function Hero() {
         </div>
       </div>
       <div className="hero-drone"><img src={HeroPhantom}/></div>
-      <div className="hero-scroll"><span /> листайте вниз</div>
     </section>
   )
 }
