@@ -97,36 +97,44 @@ const navLinks: NavLink[] = [
   {
     id: 'equipment',
     title: 'оборудование',
-    groups: [{ title: '', links: [
-      { title: 'Агродроны', href: '#models' },
-      { title: 'Прицепные комплекты', href: '#trailers' },
-      { title: 'Компоненты и запчасти', href: '#directions' },
-    ] }],
+    groups: [{
+      title: '', links: [
+        { title: 'Агродроны', href: '#models' },
+        { title: 'Прицепные комплекты', href: '#trailers' },
+        { title: 'Компоненты и запчасти', href: '#directions' },
+      ]
+    }],
   },
   {
     id: 'service',
     title: 'сервис',
     groups: [
-      { title: 'Сервис 24/7', links: [
-        { title: 'SLA и что входит', href: '#directions' },
-        { title: 'Выездной ремонт', href: '#callback' },
-        { title: 'Заявка на ремонт', href: '#callback' },
-      ] },
-      { title: 'Внедрение под ключ', links: [
-        { title: 'Как проходит проект', href: '#steps' },
-        { title: 'Расчёт окупаемости', href: '#calculator' },
-        { title: 'Лизинг и финансирование', href: '#callback' },
-      ] },
+      {
+        title: 'Сервис 24/7', links: [
+          { title: 'SLA и что входит', href: '#directions' },
+          { title: 'Выездной ремонт', href: '#callback' },
+          { title: 'Заявка на ремонт', href: '#callback' },
+        ]
+      },
+      {
+        title: 'Внедрение под ключ', links: [
+          { title: 'Как проходит проект', href: '#steps' },
+          { title: 'Расчёт окупаемости', href: '#calculator' },
+          { title: 'Лизинг и финансирование', href: '#callback' },
+        ]
+      },
     ],
   },
   {
     id: 'training',
     title: 'обучение пилотов',
-    groups: [{ title: 'Обучение пилотов', links: [
-      { title: 'Программа курса', href: '#training' },
-      { title: 'Как проходит обучение', href: '#steps' },
-      { title: 'Оставить заявку', href: '#callback' },
-    ] }],
+    groups: [{
+      title: 'Обучение пилотов', links: [
+        { title: 'Программа курса', href: '#training' },
+        { title: 'Как проходит обучение', href: '#steps' },
+        { title: 'Оставить заявку', href: '#callback' },
+      ]
+    }],
   },
   {
     id: 'cases',
@@ -136,20 +144,24 @@ const navLinks: NavLink[] = [
   {
     id: 'company',
     title: 'о компании',
-    groups: [{ title: 'О компании', links: [
-      { title: 'Команда', href: '#team' },
-      { title: 'Наши партнёры', href: '#partners' },
-      { title: 'Документы', href: '#documents' },
-    ] }],
+    groups: [{
+      title: 'О компании', links: [
+        { title: 'Команда', href: '#team' },
+        { title: 'Наши партнёры', href: '#partners' },
+        { title: 'Документы', href: '#documents' },
+      ]
+    }],
   },
   {
     id: 'contacts',
     title: 'контакты',
-    groups: [{ title: 'Связаться с нами', links: [
-      { title: 'Оставить заявку', href: '#callback' },
-      { title: 'Telegram', href: 'https://t.me/' },
-      { title: 'MAX', href: 'https://max.ru/' },
-    ] }],
+    groups: [{
+      title: 'Связаться с нами', links: [
+        { title: 'Оставить заявку', href: '#callback' },
+        { title: 'Telegram', href: 'https://t.me/' },
+        { title: 'MAX', href: 'https://max.ru/' },
+      ]
+    }],
   },
 ]
 
@@ -179,7 +191,7 @@ function Header() {
       </a>
 
       <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'} onClick={() => setMenuOpen(!menuOpen)}>
-        <span/><span/><span/>
+        <span /><span /><span />
       </button>
 
       <nav
@@ -225,8 +237,8 @@ function Header() {
       </nav>
 
       <div className="header-actions">
-        <a className="social-link" href="https://t.me/"><img src={Telegram}/></a>
-        <a className="social-link" href="https://max.ru/"><img src={Max}/></a>
+        <a className="social-link" href="https://t.me/"><img src={Telegram} /></a>
+        <a className="social-link" href="https://max.ru/"><img src={Max} /></a>
       </div>
     </header>
   )
@@ -260,10 +272,9 @@ function Hero() {
             <a className="button button-lime" href="#callback">Получить консультацию</a>
             <a className="button button-dark" href="#models">В каталог</a>
           </div>
-          <div className="hero-note">Подбор техники, прицепы собственного производства, обучение и поддержка в сезон.</div>
         </div>
       </div>
-      <div className="hero-drone"><img src={HeroPhantom}/></div>
+      <div className="hero-drone"><img src={HeroPhantom} /></div>
     </section>
   )
 }
@@ -469,15 +480,101 @@ function ContactForm({ compact = false }: { compact?: boolean }) {
 }
 
 function Callback() {
-  return <section className="callback-section" id="callback"><div className="content-wrap callback-layout"><div><span className="section-kicker">Заявка на консультацию</span><h2>Пришлём расчёт по вашим площадям</h2><p>Заполните несколько полей — подготовим комплектацию, стоимость и срок окупаемости.</p><div className="callback-contacts"><a href="https://t.me/">Telegram ↗</a><a href="https://max.ru/">MAX ↗</a></div></div><ContactForm /></div></section>
+  return <section className="callback-section" id="callback">
+    <div className="content-wrap callback-layout">
+      <div>
+        <span className="section-kicker">Заявка на консультацию</span>
+        <h2>Пришлём расчёт по вашим площадям</h2>
+        <p>Заполните несколько полей — подготовим комплектацию, стоимость и срок окупаемости.</p>
+        <div className="callback-contacts">
+          <a href="https://t.me/">Telegram ↗</a>
+          <a href="https://max.ru/">MAX ↗</a>
+        </div>
+      </div>
+      
+      <ContactForm />
+    </div>
+  </section>
 }
 
 function Footer() {
-  return <footer className="site-footer" id="contacts"><div className="content-wrap"><div className="footer-main"><div className="footer-about"><a className="brand" href="#home"><span className="brand-symbol">А</span><span className="brand-copy"><strong>АГРАС</strong><small>агродроны для вашего бизнеса</small></span></a><p>Внедрение агродронов под ключ: подбор, прицепные комплекты, обучение пилотов и сервис 24/7.</p></div><div className="footer-column"><strong>Оборудование</strong><a href="#models">Агродроны</a><a href="#trailers">Прицепные комплексы</a><a href="#directions">Компоненты и запчасти</a><a href="#callback">Лизинг</a></div><div className="footer-column"><strong>Услуги</strong><a href="#directions">Сервис 24/7</a><a href="#directions">Обучение пилотов</a><a href="#steps">Внедрение под ключ</a><a href="#calculator">Калькулятор</a></div><div className="footer-column"><strong>Компания</strong><a href="#team">О нас</a><a href="#cases">Кейсы</a><a href="#blog">Блог</a><a href="#documents">Документы</a></div><div className="footer-details"><strong>Контакты</strong><a href="#callback">Оставить заявку</a><a href="https://t.me/">Telegram</a><a href="https://max.ru/">MAX</a><span>Работаем по всей России</span></div></div><div className="footer-bottom"><span>© 2026 Аграс. Все права защищены.</span><a href="#documents">Политика конфиденциальности</a><a href="#documents">Политика обработки персональных данных</a><span>Сайт не является публичной офертой</span></div></div></footer>
+  return <footer className="site-footer" id="contacts">
+    <div className="content-wrap">
+      <div className="footer-main">
+        <div className="footer-about">
+          <a className="brand" href="#home">
+            <span className="brand-symbol">А</span>
+            <span className="brand-copy">
+              <strong>АГРАС</strong>
+              <small>агродроны для вашего бизнеса</small>
+            </span>
+          </a>
+          
+          <p>Внедрение агродронов под ключ: подбор, прицепные комплекты, обучение пилотов и сервис 24/7.</p>  
+        </div>
+
+        <div className="footer-column">
+          <strong>Оборудование</strong>
+          <a href="#models">Агродроны</a>
+          <a href="#trailers">Прицепные комплексы</a>
+          <a href="#directions">Компоненты и запчасти</a>
+          <a href="#callback">Лизинг</a>
+        </div>
+        
+        <div className="footer-column">
+          <strong>Услуги</strong>
+          <a href="#directions">Сервис 24/7</a>
+          <a href="#directions">Обучение пилотов</a>
+          <a href="#steps">Внедрение под ключ</a>
+          <a href="#calculator">Калькулятор</a>
+        </div>
+        
+        <div className="footer-column">
+          <strong>Компания</strong>
+          <a href="#team">О нас</a>
+          <a href="#cases">Кейсы</a>
+          <a href="#blog">Блог</a>
+          <a href="#documents">Документы</a>
+        </div>
+        
+        <div className="footer-details">
+          <strong>Контакты</strong>
+          <a href="#callback">Оставить заявку</a>
+          <a href="https://t.me/">Telegram</a>
+          <a href="https://max.ru/">MAX</a>
+          <span>Работаем по всей России</span>
+        </div>
+      </div>
+      
+      <div className="footer-bottom">
+        <span>© 2026 Аграс. Все права защищены.</span>
+        <a href="#documents">Политика конфиденциальности</a>
+        <a href="#documents">Политика обработки персональных данных</a>
+        <span>Сайт не является публичной офертой</span>
+      </div>
+    </div>
+  </footer>
 }
 
 function App() {
-  return <main className="page"><Hero /><Models /><FieldMap /><Directions /><Situations /><Trailer /><Quiz /><Steps /><Calculator /><Cases /><Partners /><Team /><Blog /><Documents /><Callback /><Footer /></main>
+  return <main className="page">
+    <Hero />
+    <Models />
+    <FieldMap />
+    <Directions />
+    <Situations />
+    <Trailer />
+    <Quiz />
+    <Steps />
+    <Calculator />
+    <Cases />
+    <Partners />
+    <Team />
+    <Blog />
+    <Documents />
+    <Callback />
+    <Footer />
+  </main>
 }
 
 export default App

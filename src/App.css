@@ -486,13 +486,6 @@
   font-size: 16px;
 }
 
-.hero-note {
-  max-width: 245px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
 .hero-drone {
   position: absolute;
   z-index: 1;
