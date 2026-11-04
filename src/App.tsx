@@ -3,7 +3,14 @@ import { useState } from 'react'
 
 import '../public/Assets/Fonts/use-font.css'
 
+import ArrowDown from '../public/Assets/Common-Arrow-Down.svg'
+
 import Logo from '../public/Assets/Common-Logo.svg';
+import Max from '../public/Assets/Common-Max.svg'
+import Telegram from '../public/Assets/Common-Telegram.svg'
+
+import HeroPhantom from '../public/Assets/Hero-Phantom.svg';
+
 
 const products = [
   { name: 'HD 580', model: 'AGR 40', tank: '70 л', flow: '40 л/мин', badge: 'Хит продаж' },
@@ -74,9 +81,76 @@ const quizQuestions = [
   'Как с вами удобнее связаться?',
 ]
 
-const navLinks = [
-  ['Оборудование', '#models'], ['Сервис', '#directions'], ['Обучение пилотов', '#directions'],
-  ['Кейсы и результаты', '#cases'], ['О компании', '#team'], ['Контакты', '#contacts'],
+type NavMenuGroup = {
+  title: string
+  links: { title: string; href: string }[]
+}
+
+type NavLink = {
+  id: string
+  title: string
+  href?: string
+  groups?: NavMenuGroup[]
+}
+
+const navLinks: NavLink[] = [
+  {
+    id: 'equipment',
+    title: 'оборудование',
+    groups: [{ title: '', links: [
+      { title: 'Агродроны', href: '#models' },
+      { title: 'Прицепные комплекты', href: '#trailers' },
+      { title: 'Компоненты и запчасти', href: '#directions' },
+    ] }],
+  },
+  {
+    id: 'service',
+    title: 'сервис',
+    groups: [
+      { title: 'Сервис 24/7', links: [
+        { title: 'SLA и что входит', href: '#directions' },
+        { title: 'Выездной ремонт', href: '#callback' },
+        { title: 'Заявка на ремонт', href: '#callback' },
+      ] },
+      { title: 'Внедрение под ключ', links: [
+        { title: 'Как проходит проект', href: '#steps' },
+        { title: 'Расчёт окупаемости', href: '#calculator' },
+        { title: 'Лизинг и финансирование', href: '#callback' },
+      ] },
+    ],
+  },
+  {
+    id: 'training',
+    title: 'обучение пилотов',
+    groups: [{ title: 'Обучение пилотов', links: [
+      { title: 'Программа курса', href: '#training' },
+      { title: 'Как проходит обучение', href: '#steps' },
+      { title: 'Оставить заявку', href: '#callback' },
+    ] }],
+  },
+  {
+    id: 'cases',
+    title: 'кейсы и результаты',
+    href: '#cases',
+  },
+  {
+    id: 'company',
+    title: 'о компании',
+    groups: [{ title: 'О компании', links: [
+      { title: 'Команда', href: '#team' },
+      { title: 'Наши партнёры', href: '#partners' },
+      { title: 'Документы', href: '#documents' },
+    ] }],
+  },
+  {
+    id: 'contacts',
+    title: 'контакты',
+    groups: [{ title: 'Связаться с нами', links: [
+      { title: 'Оставить заявку', href: '#callback' },
+      { title: 'Telegram', href: 'https://t.me/' },
+      { title: 'MAX', href: 'https://max.ru/' },
+    ] }],
+  },
 ]
 
 function SectionTitle({ kicker, children, description }: { kicker?: string; children: string; description?: string }) {
@@ -91,21 +165,68 @@ function SectionTitle({ kicker, children, description }: { kicker?: string; chil
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+
+  const closeMenus = () => {
+    setActiveDropdown(null)
+    setMenuOpen(false)
+  }
+
   return (
     <header className="site-header">
       <a className="brand" href="#home" aria-label="Аграс, на главную">
         <img src={Logo} alt="Аграс" />
       </a>
-      <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-label="Открыть меню" onClick={() => setMenuOpen(!menuOpen)}>
-        <span /><span /><span />
+
+      <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'} onClick={() => setMenuOpen(!menuOpen)}>
+        <span/><span/><span/>
       </button>
-      <nav className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Основная навигация">
-        {navLinks.map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
+
+      <nav
+        className={menuOpen ? 'site-nav is-open' : 'site-nav'}
+        aria-label="Основная навигация"
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') closeMenus()
+        }}
+      >
+        {navLinks.map((item) => {
+          const isOpen = activeDropdown === item.id
+
+          return (
+            <div className="nav-item" key={item.id}>
+              {item.groups ? (
+                <>
+                  <button
+                    className="site-nav-trigger"
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={`nav-panel-${item.id}`}
+                    onClick={() => setActiveDropdown(isOpen ? null : item.id)}
+                  >
+                    {item.title}<img src={ArrowDown} alt="" />
+                  </button>
+                  <div className={`nav-dropdown nav-dropdown--${item.id}`} id={`nav-panel-${item.id}`} hidden={!isOpen}>
+                    {item.groups.map((group, index) => (
+                      <div className="nav-dropdown-group" key={`${item.id}-${index}`}>
+                        {group.title && <span className="nav-dropdown-heading">{group.title}</span>}
+                        {group.links.map((link) => (
+                          <a href={link.href} key={link.title} onClick={closeMenus}>{link.title}</a>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <a className="site-nav-link" href={item.href} onClick={closeMenus}>{item.title}</a>
+              )}
+            </div>
+          )
+        })}
       </nav>
+
       <div className="header-actions">
-        <a className="social-link" href="https://t.me/" aria-label="Telegram">tg</a>
-        <a className="social-link max-link" href="https://max.ru/" aria-label="MAX">m</a>
-        <a className="header-cta" href="#callback">Связаться <span aria-hidden="true">↗</span></a>
+        <a className="social-link" href="https://t.me/"><img src={Telegram}/></a>
+        <a className="social-link" href="https://max.ru/"><img src={Max}/></a>
       </div>
     </header>
   )
@@ -142,7 +263,7 @@ function Hero() {
           <div className="hero-note">Подбор техники, прицепы собственного производства, обучение и поддержка в сезон.</div>
         </div>
       </div>
-      <div className="hero-drone"><DroneIllustration /></div>
+      <div className="hero-drone"><img src={HeroPhantom}/></div>
       <div className="hero-scroll"><span /> листайте вниз</div>
     </section>
   )
@@ -203,7 +324,7 @@ function Directions() {
       <div className="content-wrap">
         <SectionTitle kicker="От выбора борта до поддержки в сезон" description="Которые закрывают весь цикл — от выбора борта до ремонта в разгар сезона.">Шесть направлений</SectionTitle>
         <div className="direction-grid">
-          {directions.map(([title, text, action], index) => <article className={`direction-card direction-${index + 1}`} key={title}>
+          {directions.map(([title, text, action], index) => <article className={`direction-card direction-${index + 1}`} id={index === 5 ? 'training' : undefined} key={title}>
             <span className="direction-number">0{index + 1}</span><h3>{title}</h3><p>{text}</p><a href={index === 1 ? '#models' : '#callback'}>{action}<span aria-hidden="true"> ↗</span></a>
           </article>)}
         </div>
