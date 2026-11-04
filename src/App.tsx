@@ -257,8 +257,8 @@ function Hero() {
         </div>
         <div className="hero-bottom">
           <div className="hero-buttons">
-            <a className="button button-lime" href="#callback">Получить консультацию <span aria-hidden="true">↗</span></a>
-            <a className="button button-dark" href="#models">В каталог <span aria-hidden="true">↓</span></a>
+            <a className="button button-lime" href="#callback">Получить консультацию</a>
+            <a className="button button-dark" href="#models">В каталог</a>
           </div>
           <div className="hero-note">Подбор техники, прицепы собственного производства, обучение и поддержка в сезон.</div>
         </div>
@@ -278,7 +278,10 @@ function ProductCard({ product, index }: { product: typeof products[number]; ind
         <span>Максимальный вылив <b>{product.flow}</b></span>
         <span>Цена с НДС <b>По запросу</b></span>
       </div>
-      <div className="product-actions"><a className="button button-pale" href="#callback">Подробнее</a><a className="button button-lime" href="#callback">Оставить заявку</a></div>
+      <div className="product-actions">
+        <a className="button button-pale" href="#callback">Подробнее</a>
+        <a className="button button-lime" href="#callback">Оставить заявку</a>
+      </div>
     </article>
   )
 }
