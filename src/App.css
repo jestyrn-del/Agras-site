@@ -372,13 +372,6 @@
   isolation: isolate;
 }
 
-.hero-backdrop {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(237, 237, 237, .97) 0%, rgba(237, 237, 237, .9) 42%, rgba(237, 237, 237, .12) 100%), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85') center 53% / cover;
-}
-
 .hero-content {
   position: relative;
   z-index: 2;
@@ -495,15 +488,6 @@
   height: 480px;
   display: grid;
   place-items: center;
-}
-
-.hero-drone::before {
-  content: '';
-  position: absolute;
-  inset: 16% 4% 4%;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .32);
-  filter: blur(26px);
 }
 
 .hero-drone img {

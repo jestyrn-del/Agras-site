@@ -259,7 +259,6 @@ function DroneIllustration() {
 function Hero() {
   return (
     <section className="hero-section" id="home">
-      <div className="hero-backdrop" />
       <Header />
       <div className="hero-content">
         <p className="hero-overline">Внедряем агродроны под ключ — от подбора до сервиса 24/7</p>
