@@ -256,6 +256,7 @@ function Hero() {
         </div>
 
         <div className="hero-background-blur" />
+        <div className="hero-background-frame" />
 
         <div className="hero-background-card">
           <p>С НДС</p>
