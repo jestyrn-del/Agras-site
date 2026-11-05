@@ -372,6 +372,75 @@
   isolation: isolate;
 }
 
+.hero-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 900px;
+
+  isolation: isolate;
+}
+
+.hero-background-container {
+  position: absolute;
+
+  width: 943px;
+  height: 943px;
+
+  top: 180px;
+  right: -300px;
+
+  z-index: 0;
+}
+
+.hero-background-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  transform: rotate(-25deg);
+}
+
+.hero-background-blur {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  pointer-events: none;
+
+  mask-image: radial-gradient(
+      ellipse 220px 300px at calc(100% - 190px) 520px,
+      transparent 98%,
+      black 100%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 220px 300px at calc(100% - 190px) 520px,
+    transparent 98%,
+    black 100%
+  );
+}
+
+/* Карточка */
+.hero-background-card {
+    position: absolute;
+
+    width: 320px;
+    height: 600px;
+
+    right: 30px;
+    top: 220px;
+
+    z-index: 2;
+
+    color: #000;
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -481,7 +550,7 @@
 
 .hero-drone {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   right: 450px;
   top: 80px;
   width: min(54vw, 680px);

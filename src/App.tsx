@@ -11,6 +11,8 @@ import Telegram from '../public/Assets/Common-Telegram.svg'
 
 import HeroPhantom from '../public/Assets/Hero-Phantom.svg';
 
+import HeroBgr from '../public/Assets/Hero-Background.svg';
+
 
 const products = [
   { name: 'HD 580', model: 'AGR 40', tank: '70 л', flow: '40 л/мин', badge: 'Хит продаж' },
@@ -244,22 +246,24 @@ function Header() {
   )
 }
 
-function DroneIllustration() {
-  return (
-    <div className="drone-art" role="img" aria-label="Иллюстрация сельскохозяйственного дрона">
-      <div className="drone-frame"><i /><i /><i /><i /><b /></div>
-      <div className="drone-tank" />
-      <div className="drone-leg leg-left" />
-      <div className="drone-leg leg-right" />
-      <div className="drone-shadow" />
-    </div>
-  )
-}
-
 function Hero() {
   return (
     <section className="hero-section" id="home">
       <Header />
+      <div className="hero-background">
+        <div className="hero-background-container">
+          <img src={HeroBgr} alt="" />
+        </div>
+
+        <div className="hero-background-blur" />
+
+        <div className="hero-background-card">
+          <p>С НДС</p>
+          <p>В наличии</p>
+          <p>В лизинг</p>
+          <p>Регистрация в РосАвиации</p>
+        </div>
+      </div>
       <div className="hero-content">
         <p className="hero-overline">Внедряем агродроны под ключ — от подбора до сервиса 24/7</p>
         <div className="hero-title-wrap">
@@ -282,7 +286,7 @@ function ProductCard({ product, index }: { product: typeof products[number]; ind
   return (
     <article className="product-card">
       <div className="product-topline"><span>{product.name}</span><span>{product.model}</span></div>
-      <div className={`product-image product-image-${index % 4}`}><DroneIllustration /><span className="product-badge">{product.badge}</span></div>
+      <div className={`product-image product-image-${index % 4}`}> ... <span className="product-badge">{product.badge}</span></div>
       <div className="product-specs">
         <span>Объём бака <b>{product.tank}</b></span>
         <span>Максимальный вылив <b>{product.flow}</b></span>
