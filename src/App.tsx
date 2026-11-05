@@ -12,17 +12,18 @@ import Telegram from '../public/Assets/Common-Telegram.svg'
 import HeroPhantom from '../public/Assets/Hero-Phantom.svg';
 
 import HeroBgr from '../public/Assets/Hero-Background.svg';
+import DroneImage from '../public/Assets/Drone-HD-580.svg';
 
 
 const products = [
-  { name: 'HD 580', model: 'AGR 40', tank: '70 л', flow: '40 л/мин', badge: 'Хит продаж' },
-  { name: 'HD 580', model: 'AGR 30', tank: '50 л', flow: '30 л/мин', badge: 'В наличии' },
-  { name: 'HD 580', model: 'AGR 20', tank: '30 л', flow: '20 л/мин', badge: 'Компактный' },
-  { name: 'HD 580', model: 'AGR 40 PRO', tank: '70 л', flow: '40 л/мин', badge: 'Для больших площадей' },
-  { name: 'HD 580', model: 'AGR 30 PRO', tank: '50 л', flow: '30 л/мин', badge: 'Популярный' },
-  { name: 'HD 580', model: 'AGR 20 PRO', tank: '30 л', flow: '20 л/мин', badge: 'Для садов' },
-  { name: 'HD 580', model: 'AGR 40 X', tank: '70 л', flow: '40 л/мин', badge: 'Новая модель' },
-  { name: 'HD 580', model: 'AGR 30 X', tank: '50 л', flow: '30 л/мин', badge: 'Универсальный' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: '' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: 'НОВИНКА' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: '' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: 'текст' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: '' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: '' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: '' },
+  { name: 'HD 580', model: 'AGR', tank: '70 л', flow: '40 л/мин', badge: '' },
 ]
 
 const directions = [
@@ -273,8 +274,8 @@ function Hero() {
         </div>
         <div className="hero-bottom">
           <div className="hero-buttons">
-            <a className="button button-lime" href="#callback">Получить консультацию</a>
-            <a className="button button-dark" href="#models">В каталог</a>
+            <a className="button button-lime" href="#callback">получить консультацию</a>
+            <a className="button button-dark" href="#models">в каталог</a>
           </div>
         </div>
       </div>
@@ -287,15 +288,17 @@ function ProductCard({ product, index }: { product: typeof products[number]; ind
   return (
     <article className="product-card">
       <div className="product-topline"><span>{product.name}</span><span>{product.model}</span></div>
-      <div className={`product-image product-image-${index % 4}`}> ... <span className="product-badge">{product.badge}</span></div>
+      <div className={`product-image product-image-${index % 4}`}><img src={DroneImage} />
+        {product.badge !== '' && <span className="product-badge">{product.badge}</span>}
+      </div>
       <div className="product-specs">
-        <span>Объём бака <b>{product.tank}</b></span>
-        <span>Максимальный вылив <b>{product.flow}</b></span>
-        <span>Цена с НДС <b>По запросу</b></span>
+        <span>Объём бака: <b>{product.tank}</b></span>
+        <span>Максимальный вылив: <b>{product.flow}</b></span>
+        <span>Цена с НДС: <b>По запросу</b></span>
       </div>
       <div className="product-actions">
-        <a className="button button-pale" href="#callback">Подробнее</a>
-        <a className="button button-lime" href="#callback">Оставить заявку</a>
+        <a className="button button-pale" href="#callback">подробнее</a>
+        <a className="button button-lime" href="#callback">оставить заявку</a>
       </div>
     </article>
   )
@@ -307,9 +310,14 @@ function Models() {
   return (
     <section className="section-band models-section" id="models">
       <div className="content-wrap">
-        <SectionTitle kicker="Подберём под вашу задачу">ТОП моделей</SectionTitle>
-        <div className="product-grid">{visibleProducts.map((product, index) => <ProductCard key={product.model} product={product} index={index} />)}</div>
-        <button className="button button-dark show-all" type="button" onClick={() => setShowAll(!showAll)}>{showAll ? 'Свернуть каталог' : 'Все модели'} <span aria-hidden="true">{showAll ? '↑' : '↓'}</span></button>
+        <SectionTitle kicker="">ТОП моделей</SectionTitle>
+        <div className="product-grid"> 
+          {
+            visibleProducts.map((product, index) => 
+              <ProductCard key={product.model} product={product} index={index} />)
+          }
+        </div>
+        <button className="button button-dark show-all" type="button" onClick={() => setShowAll(!showAll)}>{showAll ? 'Свернуть каталог' : 'Все модели'}</button>
       </div>
     </section>
   )
