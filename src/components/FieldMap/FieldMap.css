@@ -1,0 +1,176 @@
+/* Контейнер карты */
+.field-map {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    min-height: 600px;
+    overflow: hidden;
+    border-radius: 28px;
+    background: #F3F5EF;
+}
+
+/* SVG-карта */
+.field-map > svg {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Пины */
+.field-map .map-pin {
+    position: absolute;
+    z-index: 3;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+
+    border: 4px solid #fff;
+    border-radius: 50% 50% 50% 0;
+
+    background: #171717;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .3);
+
+    transform: translate(-50%, -50%) rotate(-45deg);
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.field-map .map-pin:hover {
+    background: #2F713D;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
+}
+
+.field-map .map-pin--active {
+    background: #8DBB64;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
+}
+
+.field-map .map-pin:focus-visible {
+    outline: 2px solid #171717;
+    outline-offset: 4px;
+}
+
+/* Позиции пинов */
+.field-map .pin-a { top: 32%; left: 22%; }
+.field-map .pin-b { top: 50%; left: 34%; }
+.field-map .pin-c { top: 40%; left: 48%; }
+.field-map .pin-d { top: 63%; left: 59%; }
+.field-map .pin-e { top: 30%; left: 72%; }
+.field-map .pin-f { top: 67%; left: 82%; }
+.field-map .pin-g { top: 48%; left: 90%; }
+
+/* Карточка склада */
+.field-map .map-tooltip {
+    position: absolute;
+    z-index: 5;
+    top: 24px;
+    right: 24px;
+
+    width: 290px;
+    padding: 24px;
+
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .1);
+}
+
+.field-map .map-tooltip-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 50%;
+    background: #F1F2EF;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.field-map .map-tooltip-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #7C8B77;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.field-map .map-tooltip h3 {
+    margin: 0 0 20px;
+    color: #2F713D;
+    font-size: 21px;
+}
+
+.field-map .map-tooltip p {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0 0 18px;
+}
+
+.field-map .map-tooltip p span,
+.field-map .map-tooltip-equipment > span {
+    color: #858585;
+    font-size: 13px;
+}
+
+.field-map .map-tooltip-equipment {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding-top: 15px;
+    border-top: 1px solid #EAECE7;
+}
+
+.field-map .map-tooltip-equipment strong {
+    color: #2F713D;
+    font-size: 14px;
+}
+
+.field-map .map-label {
+    position: absolute;
+    z-index: 4;
+    bottom: 22px;
+    left: 25px;
+
+    color: #7B8A75;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+
+    pointer-events: none;
+}
+
+@media (max-width: 767px) {
+    .field-map {
+        height: 480px;
+        min-height: 480px;
+        border-radius: 18px;
+    }
+
+    .field-map .map-tooltip {
+        top: auto;
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        width: auto;
+        padding: 18px;
+    }
+
+    .field-map .map-tooltip h3 {
+        font-size: 18px;
+    }
+
+    .field-map .map-label {
+        top: 15px;
+        bottom: auto;
+        left: 15px;
+    }
+}

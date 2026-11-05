@@ -676,47 +676,22 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 0 30%, rgba(255, 255, 255, .16) 30.2% 30.7%, transparent 31%), repeating-linear-gradient(15deg, transparent 0 8.1111vh, rgba(255, 255, 255, .2) 8.2222vh 8.4444vh);
+  background: linear-gradient(
+    110deg,
+    transparent 0 30%,
+    rgba(255, 255, 255, .16) 30.2% 30.7%,
+    transparent 31%
+  ),
+  repeating-linear-gradient(
+    15deg,
+    transparent 0 8.1111vh,
+    rgba(255, 255, 255, .2) 8.2222vh 8.4444vh
+  );
+
   mix-blend-mode: screen;
-}
 
-.map-river {
-  position: absolute;
-  left: -5%;
-  top: 54%;
-  width: 114%;
-  height: 8.3333vh;
-  border-radius: 50%;
-  background: #a8c4c6;
-  transform: rotate(-15deg);
-  box-shadow: 0 0 0 1vh rgba(246, 242, 219, .45);
-}
-
-.map-road {
-  position: absolute;
-  z-index: 1;
-  width: 130%;
-  height: 1vh;
-  border-block: 0.2222vh solid rgba(255, 255, 255, .7);
-  background: rgba(226, 224, 193, .8);
-}
-
-.road-one {
-  left: -10%;
-  top: 30%;
-  transform: rotate(21deg);
-}
-
-.road-two {
-  left: -9%;
-  top: 71%;
-  transform: rotate(-24deg);
-}
-
-.road-three {
-  left: 12%;
-  top: 50%;
-  transform: rotate(77deg);
+  /* Важно: не перехватывать клики по карте */
+  pointer-events: none;
 }
 
 .map-pin {
@@ -766,38 +741,11 @@
   left: 90%;
 }
 
-.map-tooltip {
-  position: absolute;
-  z-index: 3;
-  top: 40%;
-  right: 8%;
-  width: 22.2222vh;
-  display: grid;
-  gap: 0.6667vh;
-  padding: 1.5556vh;
-  border-radius: 0.8889vh;
-  background: #1e1e1e;
-  color: #fff;
-  box-shadow: 0 0.8889vh 2.2222vh rgba(0, 0, 0, .25);
-  font-size: 1.7vh;
-}
-
 .map-tooltip span {
   line-height: 1.4;
   color: #ddd;
 }
-
-.map-label {
-  position: absolute;
-  z-index: 2;
-  right: 2vh;
-  bottom: 1.7778vh;
-  padding: 0.7778vh 1vh;
-  background: rgba(255, 255, 255, .85);
-  font-size: 1.2222vh;
-  text-transform: uppercase;
-}
-
+   
 .directions-section {
   padding-block: 6.2222vh;
 }

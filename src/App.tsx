@@ -1,6 +1,8 @@
 import './App.css'
 import { useState } from 'react'
 
+import FielddMap from './components/FieldMap/FieldMap';
+
 import '../public/Assets/Fonts/use-font.css'
 
 import ArrowDown from '../public/Assets/Common-Arrow-Down.svg'
@@ -572,7 +574,8 @@ function App() {
   return <main className="page">
     <Hero />
     <Models />
-    <FieldMap />
+    {/* <FieldMap /> */}
+    <FielddMap />
     <Directions />
     <Situations />
     <Trailer />
