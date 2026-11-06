@@ -574,7 +574,7 @@ function App() {
   return <main className="page">
     <Hero />
     <Models />
-    {/* <FieldMap /> */}
+    <FieldMap />
     <FielddMap />
     <Directions />
     <Situations />

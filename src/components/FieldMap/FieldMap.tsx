@@ -11,10 +11,6 @@ import { warehouses } from '../../data/warehouses';
 
 import './FieldMap.css';
 
-function normalizeRegionName(name: string): string {
-    return name.trim().toLowerCase().replace(/ё/g, 'е');
-}
-
 function FieldMap() {
     const [selectedWarehouse, setSelectedWarehouse] =
         useState<number | null>(null);
